@@ -8,6 +8,19 @@ A multi-layer Long Short-Term Memory (LSTM) neural network was developed to mode
 
 The project simulates predictive maintenance decision-making by converting model predictions into structured maintenance priority tiers.
 
+## How to Run
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+python -m scripts.train
+python -m src.infer_and_generate_workorders
+```
+
+
+
 ## 🧠 Problem Statement
 Aircraft engines degrade gradually over time. Predicting Remaining Useful Life (RUL) enables:
 - Early failure detection
@@ -58,13 +71,22 @@ The model outputs structured JSON-based maintenance event simulations to demonst
 - Matplotlib
 
 ## 📂 Project Structure
-    ├── data/
-    ├── preprocessing.py
-    ├── model.py
-    ├── train.py
-    ├── inference.py
-    ├── maintenance_simulation.py
-    └── README.md
+aerospace-rul-prediction/
+├── data/
+│   └── train_FD001.txt
+├── models/
+│   ├── lstm_rul_fd001.pt
+│   ├── scaler_fd001.joblib
+│   └── meta_fd001.json
+├── scripts/
+│   └── train.py
+├── src/
+│   ├── preprocess.py
+│   ├── build_sequences.py
+│   ├── model.py
+│   └── infer_and_generate_workorders.py
+├── requirements.txt
+└── README.md    
 
 ## 🚀 Future Improvements
 - Hyperparameter tuning
