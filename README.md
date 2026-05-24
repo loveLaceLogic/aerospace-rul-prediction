@@ -75,6 +75,7 @@ The model outputs structured JSON-based maintenance event simulations to demonst
 - Matplotlib
 
 ## 📂 Project Structure
+```text
 aerospace-rul-prediction/
 ├── data/
 │   └── train_FD001.txt
@@ -82,11 +83,6 @@ aerospace-rul-prediction/
 │   ├── lstm_rul_fd001.pt
 │   ├── scaler_fd001.joblib
 │   └── meta_fd001.json
-<<<<<<< HEAD
-=======
-├── outputs/
-│   └── training_curve.png
->>>>>>> de4808f3772fe458a0a9d7f0a585a183b878001b
 ├── scripts/
 │   └── train.py
 ├── src/
