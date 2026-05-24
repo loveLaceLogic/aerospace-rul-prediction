@@ -3,6 +3,7 @@ import random
 from pathlib import Path
 
 import joblib
+import matplotlib.pyplot as plt
 import numpy as np
 import torch
 import torch.nn as nn
@@ -10,7 +11,6 @@ from torch.utils.data import Dataset, DataLoader, random_split
 
 from src.preprocess import load_data, add_rul, scale_features, make_sequences
 from src.model import LSTMRegressor
-
 
 # =========================
 # Configuration
@@ -118,12 +118,15 @@ def main():
                 total_loss += loss.item() * xb.size(0)
 
         mse = total_loss / len(loader.dataset)
-        rmse = mse ** 0.5
+        rmse = mse**0.5
         return mse, rmse
 
     # -------------------------
     # Training loop
     # -------------------------
+    train_losses = []
+    val_losses = []
+
     for epoch in range(1, EPOCHS + 1):
         model.train()
         running_loss = 0.0
@@ -141,7 +144,10 @@ def main():
 
         train_mse = running_loss / len(train_loader.dataset)
         val_mse, val_rmse = evaluate(val_loader)
-
+        
+        train_losses.append(train_mse)
+        val_losses.append(val_mse)
+        
         print(
             f"Epoch {epoch:02d} | "
             f"Train MSE: {train_mse:.4f} | "
@@ -176,6 +182,26 @@ def main():
     print("\nSaved model to:", model_path)
     print("Saved scaler to:", scaler_path)
     print("Saved metadata to:", meta_path)
+    outputs_dir = BASE_DIR / "outputs"
+    outputs_dir.mkdir(exist_ok=True)
+
+    plt.figure(figsize=(10, 5))
+    plt.plot(train_losses, label="Train Loss")
+    plt.plot(val_losses, label="Validation Loss")
+
+    plt.xlabel("Epoch")
+    plt.ylabel("MSE Loss")
+    plt.title("LSTM RUL Training Performance")
+
+    plt.legend()
+    plt.tight_layout()
+
+    training_curve_path = outputs_dir / "training_curve.png"
+
+    plt.savefig(training_curve_path)
+    plt.close()
+
+    print("Saved training curve to:", training_curve_path)
     print("Training complete.")
 
 

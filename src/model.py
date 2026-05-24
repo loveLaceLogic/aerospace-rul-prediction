@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 
+
 class LSTMRegressor(nn.Module):
     def __init__(self, input_size, hidden_size=64, num_layers=2, dropout=0.2):
         super().__init__()
@@ -10,14 +11,11 @@ class LSTMRegressor(nn.Module):
             hidden_size=hidden_size,
             num_layers=num_layers,
             batch_first=True,
-            dropout=dropout if num_layers > 1 else 0.0
+            dropout=dropout if num_layers > 1 else 0.0,
         )
 
         self.head = nn.Sequential(
-            nn.Linear(hidden_size, 64),
-            nn.ReLU(),
-            nn.Dropout(dropout),
-            nn.Linear(64, 1)
+            nn.Linear(hidden_size, 64), nn.ReLU(), nn.Dropout(dropout), nn.Linear(64, 1)
         )
 
     def forward(self, x):

@@ -52,7 +52,7 @@ def main():
     units, X_test = last_window_per_unit(test_df, feature_cols, seq_len=SEQ_LEN)
 
     # True RUL labels for test engines (one per engine)
-    y_true = load_rul_file(rul_path)[:len(units)]
+    y_true = load_rul_file(rul_path)[: len(units)]
 
     # Load model
     device = "mps" if torch.backends.mps.is_available() else "cpu"
@@ -80,15 +80,17 @@ def main():
     work_orders = []
     for unit_id, pred_rul in zip(units, preds):
         if pred_rul < THRESHOLD:
-            work_orders.append({
-                "asset_id": f"ENGINE-{unit_id:03d}",
-                "predicted_rul_cycles": float(pred_rul),
-                "maintenance_type": "Preventive",
-                "priority": "High",
-                "issue": "Predicted low remaining useful life",
-                "timestamp": datetime.utcnow().isoformat() + "Z",
-                "integration_note": "Simulated payload for IBM Maximo EAM interface"
-            })
+            work_orders.append(
+                {
+                    "asset_id": f"ENGINE-{unit_id:03d}",
+                    "predicted_rul_cycles": float(pred_rul),
+                    "maintenance_type": "Preventive",
+                    "priority": "High",
+                    "issue": "Predicted low remaining useful life",
+                    "timestamp": datetime.utcnow().isoformat() + "Z",
+                    "integration_note": "Simulated payload for IBM Maximo EAM interface",
+                }
+            )
 
     out_dir = os.path.join(BASE_DIR, "outputs")
     os.makedirs(out_dir, exist_ok=True)

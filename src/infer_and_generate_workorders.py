@@ -21,7 +21,11 @@ X, y = make_sequences(df, feature_cols, seq_len=30, rul_cap=130)
 device = "mps" if torch.backends.mps.is_available() else "cpu"
 
 model = LSTMRegressor(input_size=len(feature_cols))
-model.load_state_dict(torch.load(os.path.join(BASE_DIR, "models", "lstm_rul_fd001.pt"), map_location=device))
+model.load_state_dict(
+    torch.load(
+        os.path.join(BASE_DIR, "models", "lstm_rul_fd001.pt"), map_location=device
+    )
+)
 model.to(device)
 model.eval()
 
@@ -35,12 +39,14 @@ work_orders = []
 
 for i, pred in enumerate(preds):
     if pred < 30:  # threshold
-        work_orders.append({
-            "asset_id": f"ENGINE_{i+1}",
-            "predicted_RUL": float(pred),
-            "maintenance_type": "Preventive",
-            "priority": "High",
-            "timestamp": datetime.utcnow().isoformat()
-        })
+        work_orders.append(
+            {
+                "asset_id": f"ENGINE_{i+1}",
+                "predicted_RUL": float(pred),
+                "maintenance_type": "Preventive",
+                "priority": "High",
+                "timestamp": datetime.utcnow().isoformat(),
+            }
+        )
 
 print(json.dumps(work_orders, indent=2))
