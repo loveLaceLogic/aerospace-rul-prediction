@@ -1,0 +1,202 @@
+[
+  {
+    "asset_id": "ENGINE_1",
+    "predicted_rul": 109.27,
+    "maintenance_type": "Predictive",
+    "priority": "LOW",
+    "recommended_action": "Continue monitoring",
+    "timestamp": "2026-05-24T02:58:50.568164"
+  },
+  {
+    "asset_id": "ENGINE_2",
+    "predicted_rul": 110.46,
+    "maintenance_type": "Predictive",
+    "priority": "LOW",
+    "recommended_action": "Continue monitoring",
+    "timestamp": "2026-05-24T02:58:50.568175"
+  },
+  {
+    "asset_id": "ENGINE_3",
+    "predicted_rul": 110.72,
+    "maintenance_type": "Predictive",
+    "priority": "LOW",
+    "recommended_action": "Continue monitoring",
+    "timestamp": "2026-05-24T02:58:50.568178"
+  },
+  {
+    "asset_id": "ENGINE_4",
+    "predicted_rul": 110.17,
+    "maintenance_type": "Predictive",
+    "priority": "LOW",
+    "recommended_action": "Continue monitoring",
+    "timestamp": "2026-05-24T02:58:50.568180"
+  },
+  {
+    "asset_id": "ENGINE_5",
+    "predicted_rul": 110.46,
+    "maintenance_type": "Predictive",
+    "priority": "LOW",
+    "recommended_action": "Continue monitoring",
+    "timestamp": "2026-05-24T02:58:50.568182"
+  },
+  {
+    "asset_id": "ENGINE_6",
+    "predicted_rul": 111.07,
+    "maintenance_type": "Predictive",
+    "priority": "LOW",
+    "recommended_action": "Continue monitoring",
+    "timestamp": "2026-05-24T02:58:50.568184"
+  },
+  {
+    "asset_id": "ENGINE_7",
+    "predicted_rul": 111.79,
+    "maintenance_type": "Predictive",
+    "priority": "LOW",
+    "recommended_action": "Continue monitoring",
+    "timestamp": "2026-05-24T02:58:50.568186"
+  },
+  {
+    "asset_id": "ENGINE_8",
+    "predicted_rul": 112.77,
+    "maintenance_type": "Predictive",
+    "priority": "LOW",
+    "recommended_action": "Continue monitoring",
+    "timestamp": "2026-05-24T02:58:50.568187"
+  },
+  {
+    "asset_id": "ENGINE_9",
+    "predicted_rul": 112.9,
+    "maintenance_type": "Predictive",
+    "priority": "LOW",
+    "recommended_action": "Continue monitoring",
+    "timestamp": "2026-05-24T02:58:50.568189"
+  },
+  {
+    "asset_id": "ENGINE_10",
+    "predicted_rul": 113.13,
+    "maintenance_type": "Predictive",
+    "priority": "LOW",
+    "recommended_action": "Continue monitoring",
+    "timestamp": "2026-05-24T02:58:50.568190"
+  },
+  {
+    "asset_id": "ENGINE_11",
+    "predicted_rul": 113.26,
+    "maintenance_type": "Predictive",
+    "priority": "LOW",
+    "recommended_action": "Continue monitoring",
+    "timestamp": "2026-05-24T02:58:50.568192"
+  },
+  {
+    "asset_id": "ENGINE_12",
+    "predicted_rul": 113.73,
+    "maintenance_type": "Predictive",
+    "priority": "LOW",
+    "recommended_action": "Continue monitoring",
+    "timestamp": "2026-05-24T02:58:50.568194"
+  },
+  {
+    "asset_id": "ENGINE_13",
+    "predicted_rul": 113.52,
+    "maintenance_type": "Predictive",
+    "priority": "LOW",
+    "recommended_action": "Continue monitoring",
+    "timestamp": "2026-05-24T02:58:50.568195"
+  },
+  {
+    "asset_id": "ENGINE_14",
+    "predicted_rul": 112.82,
+    "maintenance_type": "Predictive",
+    "priority": "LOW",
+    "recommended_action": "Continue monitoring",
+    "timestamp": "2026-05-24T02:58:50.568197"
+  },
+  {
+    "asset_id": "ENGINE_15",
+    "predicted_rul": 113.46,
+    "maintenance_type": "Predictive",
+    "priority": "LOW",
+    "recommended_action": "Continue monitoring",
+    "timestamp": "2026-05-24T02:58:50.568199"
+  },
+  {
+    "asset_id": "ENGINE_16",
+    "predicted_rul": 112.13,
+    "maintenance_type": "Predictive",
+    "priority": "LOW",
+    "recommended_action": "Continue monitoring",
+    "timestamp": "2026-05-24T02:58:50.568201"
+  },
+  {
+    "asset_id": "ENGINE_17",
+    "predicted_rul": 111.02,
+    "maintenance_type": "Predictive",
+    "priority": "LOW",
+    "recommended_action": "Continue monitoring",
+    "timestamp": "2026-05-24T02:58:50.568202"
+  },
+  {
+    "asset_id": "ENGINE_18",
+    "predicted_rul": 111.55,
+    "maintenance_type": "Predictive",
+    "priority": "LOW",
+    "recommended_action": "Continue monitoring",
+    "timestamp": "2026-05-24T02:58:50.568204"
+  },
+  {
+    "asset_id": "ENGINE_19",
+    "predicted_rul": 111.53,
+    "maintenance_type": "Predictive",
+    "priority": "LOW",
+    "recommended_action": "Continue monitoring",
+    "timestamp": "2026-05-24T02:58:50.568205"
+  },
+  {
+    "asset_id": "ENGINE_20",
+    "predicted_rul": 112.19,
+    "maintenance_type": "Predictive",
+    "priority": "LOW",
+    "recommended_action": "Continue monitoring",
+    "timestamp": "2026-05-24T02:58:50.568207"
+  },
+  {
+    "asset_id": "ENGINE_21",
+    "predicted_rul": 110.92,
+    "maintenance_type": "Predictive",
+    "priority": "LOW",
+    "recommended_action": "Continue monitoring",
+    "timestamp": "2026-05-24T02:58:50.568209"
+  },
+  {
+    "asset_id": "ENGINE_22",
+    "predicted_rul": 109.96,
+    "maintenance_type": "Predictive",
+    "priority": "LOW",
+    "recommended_action": "Continue monitoring",
+    "timestamp": "2026-05-24T02:58:50.568210"
+  },
+  {
+    "asset_id": "ENGINE_23",
+    "predicted_rul": 109.32,
+    "maintenance_type": "Predictive",
+    "priority": "LOW",
+    "recommended_action": "Continue monitoring",
+    "timestamp": "2026-05-24T02:58:50.568212"
+  },
+  {
+    "asset_id": "ENGINE_24",
+    "predicted_rul": 108.86,
+    "maintenance_type": "Predictive",
+    "priority": "LOW",
+    "recommended_action": "Continue monitoring",
+    "timestamp": "2026-05-24T02:58:50.568214"
+  },
+  {
+    "asset_id": "ENGINE_25",
+    "predicted_rul": 107.75,
+    "maintenance_type": "Predictive",
+    "priority": "LOW",
+    "recommended_action": "Continue monitoring",
+    "timestamp": "2026-05-24T02:58:50.568216"
+  }
+]

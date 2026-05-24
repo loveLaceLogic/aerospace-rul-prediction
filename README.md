@@ -1,5 +1,5 @@
-# ✈️ Aerospace Remaining Useful Life (RUL) Prediction  
-**Python | PyTorch | LSTM | Time-Series Regression**
+# ✈️ Aerospace Remaining Useful Life Prediction System  
+**Predictive maintenance system for turbofan engines using LSTM-based time-series forecasting on NASA C-MAPSS degradation data.**
 
 ## 📌 Project Overview
 This project implements a deep learning–based Remaining Useful Life (RUL) prediction system for turbofan engines using NASA’s C-MAPSS degradation dataset.
@@ -63,6 +63,10 @@ The model outputs structured JSON-based maintenance event simulations to demonst
 - Visualization of predicted vs actual RUL
 - Trend analysis across degradation cycles
 
+ ## 📉 Training Visualization
+
+![Training Curve](outputs/training_curve.png) 
+
 ## 🛠 Technologies Used
 - Python
 - PyTorch
@@ -78,6 +82,11 @@ aerospace-rul-prediction/
 │   ├── lstm_rul_fd001.pt
 │   ├── scaler_fd001.joblib
 │   └── meta_fd001.json
+<<<<<<< HEAD
+=======
+├── outputs/
+│   └── training_curve.png
+>>>>>>> de4808f3772fe458a0a9d7f0a585a183b878001b
 ├── scripts/
 │   └── train.py
 ├── src/
