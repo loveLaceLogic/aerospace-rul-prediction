@@ -1,5 +1,5 @@
-# ✈️ Aerospace Remaining Useful Life (RUL) Prediction  
-**Python | PyTorch | LSTM | Time-Series Regression**
+# ✈️ Aerospace Remaining Useful Life Prediction System  
+**Predictive maintenance system for turbofan engines using LSTM-based time-series forecasting on NASA C-MAPSS degradation data.**
 
 ## 📌 Project Overview
 This project implements a deep learning–based Remaining Useful Life (RUL) prediction system for turbofan engines using NASA’s C-MAPSS degradation dataset.
@@ -50,6 +50,10 @@ The model outputs structured JSON-based maintenance event simulations to demonst
 - Visualization of predicted vs actual RUL
 - Trend analysis across degradation cycles
 
+ ## 📉 Training Visualization
+
+![Training Curve](outputs/training_curve.png) 
+
 ## 🛠 Technologies Used
 - Python
 - PyTorch
@@ -58,13 +62,36 @@ The model outputs structured JSON-based maintenance event simulations to demonst
 - Matplotlib
 
 ## 📂 Project Structure
-    ├── data/
-    ├── preprocessing.py
-    ├── model.py
-    ├── train.py
-    ├── inference.py
-    ├── maintenance_simulation.py
-    └── README.md
+aerospace-rul-prediction/
+├── data/
+│   └── train_FD001.txt
+├── models/
+│   ├── lstm_rul_fd001.pt
+│   ├── scaler_fd001.joblib
+│   └── meta_fd001.json
+├── outputs/
+│   └── training_curve.png
+├── scripts/
+│   └── train.py
+├── src/
+│   ├── preprocess.py
+│   ├── build_sequences.py
+│   ├── model.py
+│   └── infer_and_generate_workorders.py
+├── requirements.txt
+└── README.md    
+
+## ▶️ How to Run
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+
+pip install -r requirements.txt
+
+python -m scripts.train
+python -m src.infer_and_generate_workorders
+```
 
 ## 🚀 Future Improvements
 - Hyperparameter tuning
