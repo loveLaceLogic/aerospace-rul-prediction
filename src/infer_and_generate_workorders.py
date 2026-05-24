@@ -3,7 +3,12 @@ import torch
 import json
 from datetime import datetime
 
-from preprocess import load_data, add_rul, scale_features, make_sequences
+from src.preprocess import (
+    load_data,
+    add_rul,
+    scale_features,
+    make_sequences,
+)
 from src.model import LSTMRegressor
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
