@@ -7,7 +7,7 @@ from pathlib import Path
 import joblib
 import torch
 
-from src.model import LSTMRegressor
+from src.model import GRURegressor, LSTMRegressor, SimpleRNNRegressor
 from src.preprocess import (
     add_rul,
     load_data,
@@ -15,9 +15,7 @@ from src.preprocess import (
     scale_features,
 )
 
-BASE_DIR = os.path.dirname(
-    os.path.dirname(os.path.abspath(__file__))
-)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 TEST_PATH = os.path.join(
     BASE_DIR,
@@ -25,30 +23,17 @@ TEST_PATH = os.path.join(
     "train_FD001.txt",
 )
 
-FEATURE_COLS = (
-    ["op1", "op2", "op3"]
-    + [f"s{i}" for i in range(1, 22)]
-)
+FEATURE_COLS = ["op1", "op2", "op3"] + [f"s{i}" for i in range(1, 22)]
 
 parser = argparse.ArgumentParser()
-
-parser.add_argument(
-    "--model",
-    default="LSTM"
-)
-
+parser.add_argument("--model", default="LSTM")
 args = parser.parse_args()
 
 model_choice = args.model
 
 df = load_data(TEST_PATH)
-
 df = add_rul(df)
-
-df, scaler = scale_features(
-    df,
-    FEATURE_COLS
-)
+df, scaler = scale_features(df, FEATURE_COLS)
 
 X, y = make_sequences(
     df,
@@ -58,7 +43,6 @@ X, y = make_sequences(
 )
 
 if model_choice == "LinearRegression":
-
     model = joblib.load(
         os.path.join(
             BASE_DIR,
@@ -68,7 +52,6 @@ if model_choice == "LinearRegression":
     )
 
     X_input = X.reshape(X.shape[0], -1)
-
     predictions = model.predict(X_input)
 
 elif model_choice == "RandomForest":
@@ -81,20 +64,60 @@ elif model_choice == "RandomForest":
     )
 
     X_input = X.reshape(X.shape[0], -1)
-
     predictions = model.predict(X_input)
 
+elif model_choice == "SimpleRNN":
+    device = "mps" if torch.backends.mps.is_available() else "cpu"
+
+    model = SimpleRNNRegressor(input_size=len(FEATURE_COLS))
+
+    model.load_state_dict(
+        torch.load(
+            os.path.join(
+                BASE_DIR,
+                "models",
+                "simple_rnn_fd001.pt",
+            ),
+            map_location=device,
+        )
+    )
+
+    model.to(device)
+    model.eval()
+
+    X_tensor = torch.tensor(X, dtype=torch.float32).to(device)
+
+    with torch.no_grad():
+        predictions = model(X_tensor).cpu().numpy().flatten()
+
+elif model_choice == "GRU":
+    device = "mps" if torch.backends.mps.is_available() else "cpu"
+
+    model = GRURegressor(input_size=len(FEATURE_COLS))
+
+    model.load_state_dict(
+        torch.load(
+            os.path.join(
+                BASE_DIR,
+                "models",
+                "gru_rul_fd001.pt",
+            ),
+            map_location=device,
+        )
+    )
+
+    model.to(device)
+    model.eval()
+
+    X_tensor = torch.tensor(X, dtype=torch.float32).to(device)
+
+    with torch.no_grad():
+        predictions = model(X_tensor).cpu().numpy().flatten()
+
 else:
+    device = "mps" if torch.backends.mps.is_available() else "cpu"
 
-    device = (
-        "mps"
-        if torch.backends.mps.is_available()
-        else "cpu"
-    )
-
-    model = LSTMRegressor(
-        input_size=len(FEATURE_COLS)
-    )
+    model = LSTMRegressor(input_size=len(FEATURE_COLS))
 
     model.load_state_dict(
         torch.load(
@@ -108,96 +131,46 @@ else:
     )
 
     model.to(device)
-
     model.eval()
 
-    X_tensor = torch.tensor(
-        X,
-        dtype=torch.float32
-    ).to(device)
+    X_tensor = torch.tensor(X, dtype=torch.float32).to(device)
 
     with torch.no_grad():
-
-        predictions = (
-            model(X_tensor)
-            .cpu()
-            .numpy()
-            .flatten()
-    )   
+        predictions = model(X_tensor).cpu().numpy().flatten()
 
 work_orders = []
 
 for i, rul in enumerate(predictions):
-
     if rul < 108:
-
         priority = "HIGH"
-
-        action = (
-            "Immediate maintenance required"
-        )
+        action = "Immediate maintenance required"
 
     elif rul < 111:
-
         priority = "MEDIUM"
-
-        action = (
-            "Schedule maintenance soon"
-        )
+        action = "Schedule maintenance soon"
 
     else:
-
         priority = "LOW"
-
-        action = (
-            "Continue monitoring"
-        )
+        action = "Continue monitoring"
 
     work_orders.append(
         {
             "asset_id": f"ENGINE_{i + 1}",
-
-            "predicted_rul": round(
-                float(rul),
-                2,
-            ),
-
+            "predicted_rul": round(float(rul), 2),
             "maintenance_type": "Predictive",
-
             "priority": priority,
-
             "recommended_action": action,
-
-            "timestamp": datetime.now(
-                UTC
-            ).isoformat(),
+            "timestamp": datetime.now(UTC).isoformat(),
         }
     )
 
 outputs_dir = Path(BASE_DIR) / "outputs"
-
 outputs_dir.mkdir(exist_ok=True)
 
-output_path = (
-    outputs_dir
-    / "maintenance_alerts.json"
-)
+output_path = outputs_dir / "maintenance_alerts.json"
 
 with open(output_path, "w") as f:
+    json.dump(work_orders, f, indent=2)
 
-    json.dump(
-        work_orders,
-        f,
-        indent=2,
-    )
-
-print(
-    json.dumps(
-        work_orders,
-        indent=2,
-    )
-)
-
-print(
-    f"\nSaved maintenance alerts to: {output_path}"
-)
+print(json.dumps(work_orders, indent=2))
+print(f"\nSaved maintenance alerts to: {output_path}")

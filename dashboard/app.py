@@ -15,8 +15,10 @@ model_choice = st.selectbox(
     "Choose Prediction Model",
     [
         "LSTM",
-        "Linear Regression",
-        "Random Forest",
+        "GRU",
+        "SimpleRNN",
+        "LinearRegression",
+        "RandomForest",
     ]
 )
 
