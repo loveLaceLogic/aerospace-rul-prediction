@@ -1,108 +1,95 @@
-# ✈️ Aerospace Remaining Useful Life Prediction System  
-**Predictive maintenance system for turbofan engines using LSTM-based time-series forecasting on NASA C-MAPSS degradation data.**
+# ✈️ Aerospace Remaining Useful Life Prediction System
 
-## 📌 Project Overview
-This project implements a deep learning–based Remaining Useful Life (RUL) prediction system for turbofan engines using NASA’s C-MAPSS degradation dataset.
+Predictive maintenance platform for turbofan engines using machine learning and deep learning models trained on NASA's C-MAPSS degradation dataset.
 
-A multi-layer Long Short-Term Memory (LSTM) neural network was developed to model temporal sensor degradation patterns and estimate the number of operational cycles remaining before engine failure.
+## 🚀 Project Overview
 
-The project simulates predictive maintenance decision-making by converting model predictions into structured maintenance priority tiers.
+This project predicts the Remaining Useful Life (RUL) of aircraft turbofan engines by analyzing operational and sensor telemetry data.
 
-## How to Run
+The system simulates a real-world predictive maintenance workflow by:
 
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+* Forecasting engine degradation
+* Estimating remaining operational cycles
+* Generating maintenance recommendations
+* Assigning maintenance priorities
+* Delivering results through a Spring Boot API and Streamlit dashboard
 
-python -m scripts.train
-python -m src.infer_and_generate_workorders
-```
+The goal is to demonstrate how machine learning can support maintenance planning, reduce downtime, and improve fleet reliability.
 
+## 🤖 Supported Prediction Models
 
+| Model             | Type                 |
+| ----------------- | -------------------- |
+| LSTM              | Deep Learning        |
+| GRU               | Deep Learning        |
+| SimpleRNN         | Deep Learning        |
+| Random Forest     | Ensemble Learning    |
+| Linear Regression | Statistical Learning |
 
-## 🧠 Problem Statement
-Aircraft engines degrade gradually over time. Predicting Remaining Useful Life (RUL) enables:
-- Early failure detection
-- Maintenance cost reduction
-- Operational risk mitigation
-- Predictive maintenance optimization
+Users can switch between models directly from the dashboard and compare prediction outputs.
 
 ## 📊 Dataset
-- Source: NASA C-MAPSS Turbofan Engine Degradation Dataset
-- Multivariate sensor readings over operational cycles
-- Multiple engine units with varying failure patterns
-- Supervised regression target: Remaining Useful Life (RUL)
 
-## 🏗 Model Architecture
-- Multi-layer LSTM network
-- Sliding-window sequence generation
-- Standardized sensor feature scaling
-- Fully connected output layer for regression
-- Mean Squared Error (MSE) loss function
-- Adam optimizer for convergence
+NASA C-MAPSS Turbofan Engine Degradation Dataset
 
-## 🔄 Data Processing Pipeline
-1. Load raw turbofan sensor dataset
-2. Standardize sensor values
-3. Generate sliding-window sequences
-4. Construct RUL targets
-5. Train/test split
-6. Model training and evaluation
+Features include:
 
-## ⚙️ Maintenance Simulation Logic
-After generating RUL predictions, post-processing logic categorizes engines into:
-- High Risk
-- Medium Risk
-- Low Risk
+* Operational settings
+* Sensor measurements
+* Engine cycle history
+* Simulated degradation patterns
 
-The model outputs structured JSON-based maintenance event simulations to demonstrate how predictions could support enterprise maintenance decision workflows.
+The dataset is commonly used for predictive maintenance and Remaining Useful Life (RUL) forecasting research.
 
-## 📈 Evaluation
-- Regression performance measured using Mean Squared Error (MSE)
-- Visualization of predicted vs actual RUL
-- Trend analysis across degradation cycles
+## 🏗️ System Architecture
 
- ## 📉 Training Visualization
+Data Processing → Model Training → Prediction Engine → Spring Boot API → Streamlit Dashboard → Maintenance Alerts
 
-![Training Curve](outputs/training_curve.png) 
+## ⚙️ Technology Stack
 
-## 🛠 Technologies Used
-- Python
-- PyTorch
-- NumPy
-- Pandas
-- Matplotlib
+### Machine Learning
 
-## 📂 Project Structure
-```text
-aerospace-rul-prediction/
-├── data/
-│   └── train_FD001.txt
-├── models/
-│   ├── lstm_rul_fd001.pt
-│   ├── scaler_fd001.joblib
-│   └── meta_fd001.json
-├── scripts/
-│   └── train.py
-├── src/
-│   ├── preprocess.py
-│   ├── build_sequences.py
-│   ├── model.py
-│   └── infer_and_generate_workorders.py
-├── requirements.txt
-└── README.md    
+* Python
+* PyTorch
+* Scikit-Learn
+* NumPy
+* Pandas
 
-## 🚀 Future Improvements
-- Hyperparameter tuning
-- Bidirectional LSTM experimentation
-- Transformer-based time-series modeling
-- Deployment as REST API
-- Real-time streaming inference pipeline
+### Backend
 
-## 🎯 Key Takeaways
-- Applied sequence-based deep learning for real-world predictive maintenance
-- Implemented modular ML pipeline for maintainability
-- Translated model outputs into structured operational decisions
-- Demonstrated applied knowledge of LSTM architectures and time-series modeling
+* Java
+* Spring Boot
+* Maven
 
+### Dashboard
+
+* Streamlit
+
+### Development
+
+* Git
+* GitHub
+* VS Code
+
+## 🔧 Key Features
+
+* Multi-model prediction system
+* Predictive maintenance recommendations
+* Priority-based work order generation
+* Interactive dashboard
+* REST API integration
+* Model comparison capability
+* JSON maintenance alert generation
+* Real-time prediction workflow
+
+## 📈 Example Output
+
+```json
+{
+  "asset_id": "ENGINE_1",
+  "predicted_rul": 129.75,
+  "maintenance_type": "Predictive",
+  "priority": "LOW",
+  "recommended_action": "Continue monitoring"
+}
+```
