@@ -93,3 +93,32 @@ Data Processing → Model Training → Prediction Engine → Spring Boot API →
   "recommended_action": "Continue monitoring"
 }
 ```
+## Dashboard Screenshots
+
+### Multi-Model Dashboard
+
+Supports LSTM, GRU, SimpleRNN, Random Forest, and Linear Regression.
+
+<img width="657" height="778" alt="Dashboard-Home" src="https://github.com/user-attachments/assets/3ab4212d-dadb-410a-b8a3-6f5ca0314276" />
+
+
+### Prediction Results
+
+Generated Remaining Useful Life (RUL) predictions and maintenance recommendations.
+
+<img width="1431" height="783" alt="Prediction-Results" src="https://github.com/user-attachments/assets/e4bdd38d-26ec-4e38-849d-f7c4b6e98f3b" />
+
+
+### Priority Filtering
+
+Filter maintenance recommendations by severity.
+
+<img width="654" height="570" alt="Priority-Filter " src="https://github.com/user-attachments/assets/a79ea901-ccf7-41e6-bfa0-f02058dc770f" />
+
+
+### System Architecture
+
+End-to-end predictive maintenance workflow.
+
+<img width="491" height="639" alt="system-architecture" src="https://github.com/user-attachments/assets/6a70abed-480c-46f5-abbc-0e04f6b07208" />
+
