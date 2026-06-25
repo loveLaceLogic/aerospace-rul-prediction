@@ -122,3 +122,40 @@ End-to-end predictive maintenance workflow.
 
 <img width="491" height="639" alt="system-architecture" src="https://github.com/user-attachments/assets/6a70abed-480c-46f5-abbc-0e04f6b07208" />
 
+## 🚀 Environment Setup
+
+### Prerequisites
+
+* Python 3.11
+* Conda (Miniconda or Anaconda)
+
+### Clone the repository
+
+```bash
+git clone https://github.com/loveLaceLogic/aerospace-rul-prediction.git
+cd aerospace-rul-prediction
+```
+
+### Create the Conda environment
+
+```bash
+conda env create -f environment.yml
+```
+
+### Activate the environment
+
+```bash
+conda activate aerospace-rul
+```
+
+### Train the model
+
+```bash
+python -m scripts.train
+```
+
+### Launch the Streamlit Dashboard
+
+```bash
+streamlit run dashboard/app.py
+```
