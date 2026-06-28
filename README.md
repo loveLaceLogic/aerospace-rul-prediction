@@ -1,88 +1,150 @@
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![PyTorch](https://img.shields.io/badge/PyTorch-DeepLearning-red)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-Java-green)
+![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-red)
+![NASA](https://img.shields.io/badge/NASA-C--MAPSS-lightgrey)
+![Machine Learning](https://img.shields.io/badge/Machine-Learning-orange)
+![Conda](https://img.shields.io/badge/Conda-Environment-success)
+
 # ✈️ Aerospace Remaining Useful Life Prediction System
 
-Predictive maintenance platform for turbofan engines using machine learning and deep learning models trained on NASA's C-MAPSS degradation dataset.
+Predictive maintenance platform that estimates aircraft engine Remaining Useful Life (RUL) using multiple machine learning and deep learning models trained on NASA's C-MAPSS turbofan engine degradation dataset.
 
-## 🚀 Project Overview
+---
 
-This project predicts the Remaining Useful Life (RUL) of aircraft turbofan engines by analyzing operational and sensor telemetry data.
+# ⭐ Project Highlights
 
-The system simulates a real-world predictive maintenance workflow by:
+- ✈️ Trained predictive maintenance models using NASA's C-MAPSS turbofan engine dataset
+- 🤖 Supports five prediction models (LSTM, GRU, SimpleRNN, Random Forest, Linear Regression)
+- ⚙️ Developed a Spring Boot REST API for maintenance predictions
+- 📊 Built an interactive Streamlit dashboard for model comparison
+- 🔧 Generates priority-based maintenance recommendations
+- 📈 Predicts Remaining Useful Life (RUL) for aircraft engines
+- 🍎 Optimized model training using Apple Silicon (MPS)
+- 📦 Supports both Conda and pip environments
 
-* Forecasting engine degradation
-* Estimating remaining operational cycles
-* Generating maintenance recommendations
-* Assigning maintenance priorities
-* Delivering results through a Spring Boot API and Streamlit dashboard
+---
 
-The goal is to demonstrate how machine learning can support maintenance planning, reduce downtime, and improve fleet reliability.
+# 🚀 Project Overview
 
-## 🤖 Supported Prediction Models
+This project predicts the Remaining Useful Life (RUL) of aircraft turbofan engines by analyzing operational settings and sensor telemetry collected throughout an engine's lifecycle.
 
-| Model             | Type                 |
-| ----------------- | -------------------- |
-| LSTM              | Deep Learning        |
-| GRU               | Deep Learning        |
-| SimpleRNN         | Deep Learning        |
-| Random Forest     | Ensemble Learning    |
+The application simulates a real-world predictive maintenance workflow by:
+
+- Forecasting engine degradation
+- Estimating remaining operational cycles
+- Comparing multiple machine learning models
+- Generating maintenance recommendations
+- Assigning maintenance priorities
+- Delivering predictions through a Spring Boot REST API and Streamlit dashboard
+
+The objective is to demonstrate how machine learning can support predictive maintenance planning, reduce unexpected failures, and improve fleet reliability.
+
+---
+
+# 🤖 Supported Prediction Models
+
+| Model | Category |
+|--------|----------|
+| LSTM | Deep Learning |
+| GRU | Deep Learning |
+| SimpleRNN | Deep Learning |
+| Random Forest | Ensemble Learning |
 | Linear Regression | Statistical Learning |
 
-Users can switch between models directly from the dashboard and compare prediction outputs.
+The dashboard allows users to switch between prediction models and compare their outputs.
 
-## 📊 Dataset
+---
 
-NASA C-MAPSS Turbofan Engine Degradation Dataset
+# 📊 Dataset
 
-Features include:
+**NASA C-MAPSS Turbofan Engine Degradation Dataset**
 
-* Operational settings
-* Sensor measurements
-* Engine cycle history
-* Simulated degradation patterns
+Dataset includes:
 
-The dataset is commonly used for predictive maintenance and Remaining Useful Life (RUL) forecasting research.
+- Operational settings
+- Engine sensor measurements
+- Engine cycle history
+- Simulated degradation patterns
 
-## 🏗️ System Architecture
+This dataset is widely used for predictive maintenance and Remaining Useful Life (RUL) forecasting research.
 
-Data Processing → Model Training → Prediction Engine → Spring Boot API → Streamlit Dashboard → Maintenance Alerts
+---
 
-## ⚙️ Technology Stack
+# 🏗️ System Architecture
+
+```mermaid
+flowchart TD
+    A["NASA C-MAPSS Dataset"] --> B["Data Preprocessing"]
+    B --> C["Train ML/DL Models"]
+    C --> D["Saved Model"]
+
+    D --> E["Spring Boot REST API"]
+    E --> F["Streamlit Dashboard"]
+    F --> G["Remaining Useful Life Prediction"]
+
+    G --> H["Maintenance Recommendation"]
+    H --> I["Priority Assignment"]
+```
+
+---
+
+# ⚙️ Technology Stack
 
 ### Machine Learning
 
-* Python
-* PyTorch
-* Scikit-Learn
-* NumPy
-* Pandas
+- Python
+- PyTorch
+- Scikit-Learn
+- NumPy
+- Pandas
 
 ### Backend
 
-* Java
-* Spring Boot
-* Maven
+- Java
+- Spring Boot
+- Maven
 
 ### Dashboard
 
-* Streamlit
+- Streamlit
 
 ### Development
 
-* Git
-* GitHub
-* VS Code
+- Git
+- GitHub
+- VS Code
 
-## 🔧 Key Features
+---
 
-* Multi-model prediction system
-* Predictive maintenance recommendations
-* Priority-based work order generation
-* Interactive dashboard
-* REST API integration
-* Model comparison capability
-* JSON maintenance alert generation
-* Real-time prediction workflow
+# 🔧 Key Features
 
-## 📈 Example Output
+- Multi-model prediction system
+- Predictive maintenance recommendations
+- Priority-based work order generation
+- Interactive dashboard
+- REST API integration
+- JSON maintenance alert generation
+- Real-time prediction workflow
+- Model comparison dashboard
+
+---
+
+# 📈 Model Outputs
+
+The system generates:
+
+- Remaining Useful Life (RUL)
+- Maintenance Priority
+- Recommended Maintenance Action
+- Maintenance Category
+- Timestamped Prediction Results
+
+The dashboard allows side-by-side comparison of multiple machine learning and deep learning models.
+
+---
+
+# 📄 Example Output
 
 ```json
 {
@@ -93,69 +155,91 @@ Data Processing → Model Training → Prediction Engine → Spring Boot API →
   "recommended_action": "Continue monitoring"
 }
 ```
-## Dashboard Screenshots
 
-### Multi-Model Dashboard
+---
 
-Supports LSTM, GRU, SimpleRNN, Random Forest, and Linear Regression.
+# 📸 Dashboard Screenshots
 
-<img width="657" height="778" alt="Dashboard-Home" src="https://github.com/user-attachments/assets/3ab4212d-dadb-410a-b8a3-6f5ca0314276" />
+## 🚀 Interactive Dashboard
 
+Interactive Streamlit dashboard allowing users to select prediction models, generate Remaining Useful Life (RUL) forecasts, review fleet metrics, and visualize maintenance priorities.
 
-### Prediction Results
-
-Generated Remaining Useful Life (RUL) predictions and maintenance recommendations.
-
-<img width="1431" height="783" alt="Prediction-Results" src="https://github.com/user-attachments/assets/e4bdd38d-26ec-4e38-849d-f7c4b6e98f3b" />
+<img width="1200" alt="Interactive Dashboard" src="images/interactive-dashboard.png">
 
 
-### Priority Filtering
+---
 
-Filter maintenance recommendations by severity.
+## 📈 Fleet Predictions
 
-<img width="654" height="570" alt="Priority-Filter " src="https://github.com/user-attachments/assets/a79ea901-ccf7-41e6-bfa0-f02058dc770f" />
+Displays predicted Remaining Useful Life (RUL), maintenance priorities, recommended maintenance actions, and timestamped prediction results.
+
+<img width="1200" alt="Fleet Predictions" src="images/fleet-predictions.png">
+
+---
+
+## 🚨 Maintenance Priority Filtering
+
+Filter prediction results by maintenance priority to quickly identify aircraft engines requiring immediate maintenance attention.
 
 
-### System Architecture
+<img width="1200" alt="Maintenance Priority Filtering" src="images/maintenance-priority-filtering.png">
+---
 
-End-to-end predictive maintenance workflow.
+# 🚀 Environment Setup
 
-<img width="491" height="639" alt="system-architecture" src="https://github.com/user-attachments/assets/6a70abed-480c-46f5-abbc-0e04f6b07208" />
+## Prerequisites
 
-## 🚀 Environment Setup
+- Python 3.11
+- Conda (Miniconda or Anaconda)
 
-### Prerequisites
+---
 
-* Python 3.11
-* Conda (Miniconda or Anaconda)
-
-### Clone the repository
+## Clone Repository
 
 ```bash
 git clone https://github.com/loveLaceLogic/aerospace-rul-prediction.git
 cd aerospace-rul-prediction
 ```
 
-### Create the Conda environment
+---
+
+## Create Conda Environment
 
 ```bash
 conda env create -f environment.yml
 ```
 
-### Activate the environment
+---
+
+## Activate Environment
 
 ```bash
 conda activate aerospace-rul
 ```
 
-### Train the model
+---
+
+## Train Models
 
 ```bash
 python -m scripts.train
 ```
 
-### Launch the Streamlit Dashboard
+---
+
+## Launch Dashboard
 
 ```bash
 streamlit run dashboard/app.py
 ```
+
+---
+
+# 🚀 Future Improvements
+
+- Deploy dashboard to the cloud
+- Add XGBoost and LightGBM prediction models
+- Integrate live maintenance scheduling
+- Containerize using Docker
+- Add CI/CD with GitHub Actions
+- Support additional NASA C-MAPSS datasets
